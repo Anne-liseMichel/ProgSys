@@ -1,0 +1,82 @@
+GESTION DES JOBS AVEC BASH
+	eog leia.ppm  
+		Ouvre le fichier leia.ppm dans la visionneuse Eye Of Gnome (eog)
+	Ctrl+Z
+		La commande Ctrl+Z permet de stopper le dernier processus avec lequel on a intéragi
+	jobs
+		Affiche la liste des processus lancés (y compris ceux stoppés et en arrière plan)
+	bg
+		Permet de suspendre un processus (il s'execute en arrière plan mais n'ijntéragit plus avec l'utilisateur)
+	jobs
+	
+	gedit blur.c &
+		Ouvre le fichier blur.c dans gedit, lancé en arrière plan
+	jobs
+
+	fg %1
+		Permet de mettre le premier processus lancé en premier plan (interaction avec l'utilisateur). L'utilisateur n'a donc plus la main sur la console.
+	Ctrl+C
+		Permet de stopper le processus courant
+	jobs
+
+	ps
+		Liste les processus en cours pour l'utilisateur courant
+	kill %2
+		Permet de stopper le deuxième processus lancé (ici, il s'agit de gedit)
+	jobs
+	
+	ps -ef
+		Présente les processus en cours. L'option -f affiche l'arbre généalogique des processus et l'option -e affiche l'environnement à la suite de la ligne de commande exécutée (prend en compte la commande dans le snapshot).
+	kill -9 PID
+		Stoppe brutalement le processus avec l'ID donné. Pour trouver le PID du shell, on recherche le processus bash pour l'utilisateur ayant l'UID recherché. Notre UID peut être trouvé grâce à la commande id. ps -ef | grep UID | grep bash
+		
+BLUR.C
+Pour compiler, on a besoin de préciser std=c99 (gcc -0 exe blur.c -std=c99)
+	On teste pour un flou de rayon 10:
+			time exe leia.ppm test10.ppm 10
+			real	0m5.640s
+			user	0m5.576s
+			sys		0m0.014s
+			
+	On teste pour un flou de rayon 20:
+		time exe leia.ppm test20.ppm 20
+		real	0m21.438s
+		user	0m21.363s
+		sys		0m0.026s
+
+	On teste pour un flou de rayon 30:
+		time exe leia.ppm test30.ppm 30
+		real	0m47.460s
+		user	0m47.381s
+		sys		0m0.013s
+		
+TRAITEMENT PARALLÈLE AVEC FORK
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
